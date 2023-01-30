@@ -18,7 +18,7 @@ public class RegisterTest extends Base {
     HomePage home;
     RegisterPage register;
     UserAccountPage useraccountpage;
-    @Test(priority = 1,description = "TC001 Verify Register")
+    @Test(priority = 1,description = "TC001 Verify Register",groups = {"Regression"})
     public void TC001_verifyRegister(){
         List<ArrayList<String>> data = ExcelUtility.excelDataReader("RegisterPage");
         String gender=data.get(1).get(0);

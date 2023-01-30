@@ -17,7 +17,7 @@ public class LoginTest extends Base {
     HomePage home;
     LoginPage login;
     UserAccountPage useraccountpage;
-    @Test(priority = 1,description = "TC001 Verify Login Page Title")
+    @Test(priority = 1,description = "TC001 Verify Login Page Title",groups = {"Sanity"})
     public void TC001_verifyLoginPageTitle(){
         List<ArrayList<String>> data = ExcelUtility.excelDataReader("LoginPage");
         String expLoginPageTitle=data.get(1).get(0);
@@ -26,7 +26,7 @@ public class LoginTest extends Base {
         String actLogingPageTitle=login.getLoginPageTitle();
         Assert.assertEquals(actLogingPageTitle,expLoginPageTitle, ErrorMessages.TITLE_FAILURE_MESSAGE);
     }
-    @Test(priority = 1,description = "TC002 Verify Valid Login")
+    @Test(priority = 1,description = "TC002 Verify Valid Login",groups = {"Smoke"})
     public void TC002_verifyValidLogin(){
         home=new HomePage(driver);
         login=home.clickOnLoginMenu();
@@ -39,7 +39,7 @@ public class LoginTest extends Base {
         String actEmail=useraccountpage.getUserAccountEmailId();
         Assert.assertEquals(userEmailId,actEmail,ErrorMessages.INVALID_EMAIL_ID);
     }
-    @Test(priority = 2,description = "TC003 Verify Invalid login error message",dataProvider ="InvalidUserCredentials",dataProviderClass = DataProviders.class)
+    @Test(priority = 2,description = "TC003 Verify Invalid login error message",dataProvider ="InvalidUserCredentials",dataProviderClass = DataProviders.class,groups = {"Sanity","Regression"})
     public void TC003_verifyInvalidLoginErrorMessage(String username,String password){
         List<ArrayList<String>> data = ExcelUtility.excelDataReader("LoginPage");
         String expectedErrorMessage=data.get(1).get(3);

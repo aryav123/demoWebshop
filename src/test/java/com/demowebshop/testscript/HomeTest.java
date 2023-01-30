@@ -13,7 +13,7 @@ import java.util.List;
 
 public class HomeTest extends Base {
     HomePage home;
-    @Test(priority = 1,description = "TC001_verify Home page title")
+    @Test(priority = 1,enabled = true,description = "TC001_verify Home page title",groups = {"Smoke","Regression"})
     public void TC001_verifyHomePageTitle() {
         List<ArrayList<String>> data = ExcelUtility.excelDataReader("HomePage");
         String expHomePageTitle=data.get(1).get(0);
@@ -21,7 +21,7 @@ public class HomeTest extends Base {
         String actualHomePageTitle=home.getHomePageTitle();
         Assert.assertEquals(actualHomePageTitle,expHomePageTitle, ErrorMessages.TITLE_FAILURE_MESSAGE);
     }
-    @Test(priority = 1, description = "TC002 verify subscribe email message")
+    @Test(priority = 1, enabled = true,description = "TC002 verify subscribe email message",groups = {"Sanity"})
     public  void TC_002_verifySubscribeEmailMessage(){
         List<ArrayList<String>> data =ExcelUtility.excelDataReader("HomePage");
         String expectedSubscribeMessage=data.get(1).get(1);

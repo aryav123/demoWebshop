@@ -8,6 +8,7 @@ import org.openqa.selenium.WebDriver;
 import org.testng.ITestResult;
 import org.testng.annotations.AfterMethod;
 import org.testng.annotations.BeforeMethod;
+import org.testng.annotations.Parameters;
 
 import java.io.File;
 import java.io.FileInputStream;
@@ -32,12 +33,12 @@ public class Base {
             e.printStackTrace();
         }
     }
-
     @BeforeMethod
-    public void setUP(){
-        String browser= prop.getProperty("browser");
+    @Parameters({"browser"})
+    public void setUP(String browserName){
+//        String browser= prop.getProperty("browser");
         String url= prop.getProperty("url");
-        driver = DriverFactory.testInitialization(browser);
+        driver = DriverFactory.testInitialization(browserName);
         driver.get(url);
     }
     @AfterMethod
