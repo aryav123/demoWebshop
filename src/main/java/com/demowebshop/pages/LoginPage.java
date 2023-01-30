@@ -26,6 +26,9 @@ public class LoginPage extends TestHelper {
     @FindBy(xpath=_loginButton)
     private WebElement loginButton;
 
+    private final String _loginErrorMessage="//div[@class='validation-summary-errors']//span";
+    @FindBy(xpath = _loginErrorMessage) private WebElement loginErrorMessage;
+
 
     public String getLoginPageTitle() {
         String title=page.getPageTitle(driver);
@@ -40,5 +43,9 @@ public class LoginPage extends TestHelper {
     public UserAccountPage clickOnLoginButton(){
         page.clickOnElement(loginButton);
         return new UserAccountPage(driver);
+    }
+    public String getLoginErrorMessage(){
+        String errorMessage=page.getElementText(loginErrorMessage);
+        return errorMessage;
     }
 }

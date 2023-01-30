@@ -35,6 +35,9 @@ public class HomePage extends TestHelper {
     private final String _loginMenu ="//a[@class='ico-login']";
     @FindBy(xpath = _loginMenu) private WebElement loginMenu;
 
+    private final String _registerMenu="//a[@class='ico-register']";
+    @FindBy(xpath = _registerMenu) private WebElement registerMenu;
+
     /**
      * User Action Methods
      **/
@@ -62,6 +65,10 @@ public class HomePage extends TestHelper {
     public LoginPage clickOnLoginMenu() {
         page.clickOnElement(loginMenu);
         return new LoginPage(driver);
+    }
+    public RegisterPage clickOnRegisterMenu(){
+        page.clickOnElement(registerMenu);
+        return new RegisterPage(driver);
     }
 
 }

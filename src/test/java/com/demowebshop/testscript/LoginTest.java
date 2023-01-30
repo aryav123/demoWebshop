@@ -2,6 +2,7 @@ package com.demowebshop.testscript;
 
 import com.demowebshop.automationcore.Base;
 import com.demowebshop.constants.ErrorMessages;
+import com.demowebshop.dataprovider.DataProviders;
 import com.demowebshop.pages.HomePage;
 import com.demowebshop.pages.LoginPage;
 import com.demowebshop.pages.UserAccountPage;
@@ -37,5 +38,17 @@ public class LoginTest extends Base {
         useraccountpage = login.clickOnLoginButton();
         String actEmail=useraccountpage.getUserAccountEmailId();
         Assert.assertEquals(userEmailId,actEmail,ErrorMessages.INVALID_EMAIL_ID);
+    }
+    @Test(priority = 2,description = "TC003 Verify Invalid login error message",dataProvider ="InvalidUserCredentials",dataProviderClass = DataProviders.class)
+    public void TC003_verifyInvalidLoginErrorMessage(String username,String password){
+        List<ArrayList<String>> data = ExcelUtility.excelDataReader("LoginPage");
+        String expectedErrorMessage=data.get(1).get(3);
+        home=new HomePage(driver);
+        login=home.clickOnLoginMenu();
+        login.enterUserEmailId(username);
+        login.enterUserPassword(password);
+        login.clickOnLoginButton();
+        String actErrorMessage=login.getLoginErrorMessage();
+        Assert.assertEquals(actErrorMessage,expectedErrorMessage,ErrorMessages.INVALID_ERROR_MESSAGE);
     }
 }

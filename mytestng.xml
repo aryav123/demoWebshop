@@ -1,0 +1,26 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE suite SYSTEM "http://testng.org/testng-1.0.dtd">
+<suite name="All Test Suite">
+    <test verbose="2" preserve-order="true" name="C:/Users/Arya Vijayan/IdeaProjects/DemoWebshop">
+        <classes>
+            <class name="com.demowebshop.testscript.HomeTest">
+                <methods>
+                    <include name="TC001_verifyHomePageTitle"/>
+                    <include name="TC_002_verifySubscribeEmailMessage"/>
+                </methods>
+            </class>
+            <class name="com.demowebshop.testscript.LoginTest">
+                <methods>
+                    <include name="TC001_verifyLoginPageTitle"/>
+                    <include name="TC002_verifyValidLogin"/>
+                    <include name="TC003_verifyInvalidLoginErrorMessage"/>
+                </methods>
+            </class>
+            <class name="com.demowebshop.testscript.RegisterTest">
+                <methods>
+                    <include name="TC001_verifyRegister"/>
+                </methods>
+            </class>
+        </classes>
+    </test>
+</suite>

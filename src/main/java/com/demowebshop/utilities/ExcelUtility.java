@@ -1,6 +1,7 @@
 package com.demowebshop.utilities;
 
 import com.demowebshop.constants.Constants;
+import org.apache.poi.ss.usermodel.Cell;
 import org.apache.poi.ss.usermodel.DataFormatter;
 import org.apache.poi.ss.usermodel.Row;
 import org.apache.poi.xssf.usermodel.XSSFSheet;
@@ -44,5 +45,33 @@ public class ExcelUtility {
             excelRows.add(new ArrayList<>(Arrays.asList(columnList)));
         }
         return excelRows;
+    }
+    public  Object[][] dataProviderRead(String sheetName) {
+        DataFormatter formatter = new DataFormatter();
+        try {
+            f = new FileInputStream(System.getProperty("user.dir") + Constants.EXCEL_PATH);
+        } catch (FileNotFoundException e) {
+            throw new RuntimeException(e);
+        }
+        try {
+            wb = new XSSFWorkbook(f);
+        } catch (IOException e) {
+            throw new RuntimeException(e);
+        }
+        sh = wb.getSheet(sheetName);
+
+        int rows =sh.getLastRowNum()+1;
+        int cols = sh.getRow(0).getLastCellNum();
+        Object[][]  data = new Object[rows][cols];
+
+        for (int i = 0; i < rows; i++) {
+            Row row = sh.getRow(i);
+            String[] columnList = new String[row.getLastCellNum()];
+            for (int j = 0; j < cols; j++) {
+                Cell cell =row.getCell(j);
+                data[i][j] = cell.getStringCellValue();
+            }
+        }
+        return data;
     }
 }
