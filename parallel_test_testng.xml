@@ -1,6 +1,9 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE suite SYSTEM "http://testng.org/testng-1.0.dtd">
 <suite name="Parallel testing of testcases">
+    <listeners>
+        <listener class-name="com.demowebshop.listners.TestListener"/>
+    </listeners>
     <test name="Parallel testing - Tests" parallel="tests" thread-count="2">
         <parameter name="browser" value="chrome"/>
         <classes>

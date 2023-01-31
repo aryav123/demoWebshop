@@ -1,6 +1,9 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE suite SYSTEM "http://testng.org/testng-1.0.dtd">
 <suite name="All Test Suite">
+    <listeners>
+        <listener class-name="com.demowebshop.listners.TestListener"/>
+    </listeners>
     <test name="Parameter testing - Grouping">
         <parameter name="browser" value="chrome"/>
         <groups>
@@ -11,24 +14,9 @@
             </run>
         </groups>
         <classes>
-            <class name="com.demowebshop.testscript.HomeTest">
-                <methods>
-                    <include name="TC001_verifyHomePageTitle"/>
-                    <include name="TC_002_verifySubscribeEmailMessage"/>
-                </methods>
-            </class>
-<!--            <class name="com.demowebshop.testscript.LoginTest">-->
-<!--                <methods>-->
-<!--                    <include name="TC001_verifyLoginPageTitle"/>-->
-<!--                    <include name="TC002_verifyValidLogin"/>-->
-<!--                    <include name="TC003_verifyInvalidLoginErrorMessage"/>-->
-<!--                </methods>-->
-<!--            </class>-->
-<!--            <class name="com.demowebshop.testscript.RegisterTest">-->
-<!--                <methods>-->
-<!--                    <include name="TC001_verifyRegister"/>-->
-<!--                </methods>-->
-<!--            </class>-->
+            <class name="com.demowebshop.testscript.HomeTest"/>
+            <class name="com.demowebshop.testscript.LoginTest"/>
+            <class name="com.demowebshop.testscript.RegisterTest"/>
         </classes>
     </test>
 </suite>

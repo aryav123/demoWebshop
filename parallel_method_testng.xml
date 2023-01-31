@@ -1,6 +1,9 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE suite SYSTEM "http://testng.org/testng-1.0.dtd">
 <suite name="Parallel testing of methods">
+    <listeners>
+        <listener class-name="com.demowebshop.listners.TestListener"/>
+    </listeners>
     <test name="Parallel testing - Methods" parallel="methods" thread-count="2">
         <parameter name="browser" value="chrome"/>
         <classes>
@@ -19,7 +22,7 @@
             </class>
             <class name="com.demowebshop.testscript.RegisterTest">
                 <methods>
-                    <exclude name="TC001_verifyRegister"/>
+                    <include name="TC001_verifyRegister"/>
                 </methods>
             </class>
         </classes>
